@@ -1,0 +1,105 @@
+
+==========================================================================================================
+
+====== 20-05-2025 =====
+
+CREATE TABLE emp_sample (
+    EmpID       INT PRIMARY KEY,           
+    Name        VARCHAR(100) NOT NULL,     
+    Email       VARCHAR(100) UNIQUE,       
+    Age         INT CHECK (Age >= 18),     
+    Salary      DECIMAL(10,2) DEFAULT 30000, 
+    DeptID      INT                        
+    );
+    
+SELECT * FROM EMP_SAMPLE;
+
+CREATE TABLE dept_sample (
+  dpt_id int ,
+  cust_id int,
+  name varchar2(100) ,
+  CONSTRAINT fk_dept FOREIGN KEY (dpt_id) REFERENCES emp_sample(EmpID)
+) ;
+
+SELECT * FROM DEPT_SAMPLE1;
+
+INSERT INTO EMP_SAMPLE (EMPID, NAME, EMAIL, AGE, SALARY, DEPTID) 
+VALUES (101, 'NIKHIL SAWLE', 'NIKHIL@GMAIL.COM', 30, 100000, 21501);
+
+INSERT INTO EMP_SAMPLE (EMPID, NAME, EMAIL, AGE, SALARY, DEPTID) 
+VALUES (102, 'AMOL PATIL', 'AMOL@GMAIL.COM', 30, 100000, 21501);
+
+UPDATE EMP_SAMPLE 
+SET NAME = 'SHUBHAM CHIPADE' 
+WHERE EMPID = 102;
+
+UPDATE EMP_SAMPLE
+SET NAME = 'Shubham Chipade', SALARY = 120000
+WHERE EMPID = 102;
+
+ALTER TABLE EMP_SAMPLE 
+ADD ADDRESS VARCHAR2(100);
+
+ALTER TABLE EMP_SAMPLE 
+RENAME COLUMN ADDRESS TO LOCATION;
+
+-------------------------------------------TYPES OF FUNCTION----------------------------------------
+
+A) STRING FUNCTION
+
+SELECT UPPER('nikhil') AS result FROM DUAL; --RESULT - NIKHIL
+
+SELECT LOWER('NIKHIL') AS result FROM DUAL; --RESULT - nikhil
+
+SELECT LENGTH('Nikhil') AS result FROM DUAL; --RESULT - 6
+
+SELECT SUBSTR('Nikhil', 2, 3) AS result FROM DUAL; --RESULT - ikh
+
+SELECT INSTR('Nikhil', 'h') AS result FROM DUAL; --RESULT - 4
+
+SELECT TRIM(' K ') AS result FROM DUAL;  --RESULT - K
+
+SELECT LTRIM('    Nikhil') AS result FROM DUAL; --RESULT - Nikhil
+
+SELECT RTRIM('Nikhil    ') AS result FROM DUAL; --RESULT - Nikhil
+
+SELECT REPLACE('Nikhil', 'Ni', 'A') AS result FROM DUAL; --RESULT - Akhil
+
+SELECT CONCAT('Nikhil ', 'Sawle') AS result FROM DUAL; --RESULT - NikhilSawle
+
+SELECT INITCAP('nikhil rameshwar sawle') AS result FROM DUAL; --RESULT - Nikhil Rameshwar Sawle
+
+SELECT LPAD('Nikhil', 10, '*') AS result FROM DUAL; --RESULT - ****Nikhil
+
+SELECT RPAD('Nikhil', 10, '*') AS result FROM DUAL; --RESULT - Nikhil****
+
+select concat((initcap(ltrim(lpad ('nikhil', 10, '*' )))),'sawle') from dual;  --RESULT - ****Nikhilsawle
+
+select concat(length(initcap(ltrim(lpad ('maharashtra', 10, '*' )))),'india') from dual; --RESULT - 10india
+
+--------------------------------------------------------------------------------
+B. Numeric Function
+
+SELECT ABS(-100) AS result FROM DUAL; -- result 100
+
+SELECT CEIL(77.1) AS result FROM DUAL; -- result 78
+
+SELECT FLOOR(200.9) AS result FROM DUAL; -- result 200
+
+SELECT ROUND(20.545, 2) AS result FROM DUAL; --result 20.55
+
+SELECT TRUNC(70.567, 1) AS result FROM DUAL; -- result 70.5
+
+SELECT MOD(10, 3) AS result FROM DUAL; -- result 1 remender
+
+SELECT POWER(2, 4) AS result FROM DUAL; -- result 16
+
+SELECT SQRT(625) AS result FROM DUAL; -- result 25
+
+SELECT SIGN(100) AS result FROM DUAL; -- result 1
+
+SELECT GREATEST(123452, 658965, 5000.1 ,2021, 3586) AS result FROM DUAL; -- result 658965 
+
+SELECT LEAST(5689, 22563, 58369586, 501) AS result FROM DUAL; -- result 501
+
+---------------------------------------------------------------------------------------------
